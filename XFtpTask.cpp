@@ -23,8 +23,6 @@
 //#include <event2/event.h>
 
 
-//#include "SyncResources.h"
-
 using namespace std;
 // Detch
 void XFtpTask::ConnectoPORT() {
@@ -60,9 +58,7 @@ void XFtpTask::ClosePORT() {
 		bufferevent_free(bev);
 		bev = 0;
 	}
-//    if(listener){
-//        evconnlistener_free(listener);
-//    }
+
     
 	if (fp) {
         cout<< "fclose(fp);";
@@ -71,38 +67,16 @@ void XFtpTask::ClosePORT() {
 	}
 }
 
-
-
 void XFtpTask::InitPASV() {
     testout("At XFtpTask::InitPASV");
-    if (!cmdTask->base) {    // ||!cmdTask->bevv
-        cout << "好好好好好好好好好好好好好好: ";
-//        cout << XFtpTask::bevv << endl;
-//        cout << "InitPASV failed: event base is null" << endl;
-        return;
-    }
-    
-    if (bev) {
-        bufferevent_free(bev);
-        bev = nullptr;
-    }
-    
-//    bev = cmdTask->bevv;
-//    struct evconnlistener *listener;
-//    struct event_base *base0 = event_base_new();
-
-//    cout<< "ka duo jiu "<< endl;
-//    event_base_dispatch(base0);
-//    evconnlistener_free(listener);
-//    bev = bufferevent_socket_new(cmdTask->base, cmdTask->listen_fd, BEV_OPT_CLOSE_ON_FREE);
-    Setcb(bev);
-
-    timeval t = {60, 0};
-    bufferevent_set_timeouts(bev, &t, 0);
-
+    //TODO
 }
 
-
+void XFtpTask::trimTrailingNewlines(std::string& str) {
+    while (!str.empty() && (str.back() == '\n' || str.back() == '\r')) {
+        str.pop_back(); // 删除字符串末尾的一个字符
+    }
+}
 
 
 void XFtpTask::Setcb(bufferevent *nbev) {

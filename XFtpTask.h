@@ -39,12 +39,11 @@ public:
 	virtual void Event(bufferevent *, short) {}
 	virtual void Read(bufferevent *) {}
 	virtual void Write(bufferevent *) {}
-//    void accept_conn_cb(struct evconnlistener *listener, evutil_socket_t fd,
-//                        struct sockaddr *address, int socklen, void *ctx);
-//    static void accept_conn_cb();
+
 	void Setcb(struct bufferevent*);
 	bool Init() { return true; }
 
+    void trimTrailingNewlines(std::string& str);
 	~XFtpTask();
 
 protected:

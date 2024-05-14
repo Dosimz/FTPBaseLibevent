@@ -23,8 +23,7 @@ void XFtpDELE::Parse(std::string cmd, std::string param) {
         param = param.substr(command.length());
     }
     // 清除可能的换行符和回车符   为什么会有奇怪的换行 /r
-    param.erase(std::remove(param.begin(), param.end(), '\n'), param.end());
-    param.erase(std::remove(param.begin(), param.end(), '\r'), param.end());
+    trimTrailingNewlines(param);
     // Log the attempt to delete the file   std::filesystem::current_path()
     std::cout << std::filesystem::current_path() << std::endl;
     std::cout << "Attempting to delete file: " << param << std::endl;
