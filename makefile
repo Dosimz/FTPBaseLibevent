@@ -2,7 +2,7 @@ GCC ?= g++
 CCMODE = PROGRAM
 INCLUDES =  -I/opt/homebrew/opt/libevent/include/
 # CFLAGS =  -Wall $(MACRO) 
-CFLAGS =  -Wall -std=c++11 $(MACRO)
+CFLAGS =  -Wall -std=c++17 $(MACRO)
 TARGET = ftpSrv
 SRCS := $(wildcard *.cpp)   
 LIBS = -L /opt/homebrew/opt/libevent/lib/  -levent -lpthread
